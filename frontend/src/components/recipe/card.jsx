@@ -1,9 +1,10 @@
-import React from "react";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
+import React, { useState } from "react";
+import EditModal from "../modal/editModal";
+import DeleteModal from "../modal/deleteModal";
 
 export default function RecipeCard({ recipe }) {
   const { recipeName, ingredients, description } = recipe;
+
 
   return (
     <div className="max-w-sm rounded-xl overflow-hidden shadow-lg bg-white">
@@ -18,12 +19,8 @@ export default function RecipeCard({ recipe }) {
         <p>{description}</p>
       </div>
       <div>
-        <button>
-          <EditIcon />
-        </button>
-        <button>
-          <DeleteIcon />
-        </button>
+        <EditModal recipe={recipe} />
+        <DeleteModal />
       </div>
     </div>
   );
