@@ -1,6 +1,12 @@
 import React from "react";
-import Home from "../components/Home";
+import Hero from "../components/heroSection/hero";
 
-export default function Homepage(){
-    return <Home/>;
-} 
+
+export default function Homepage() {
+  return (
+    <>
+        <Hero/>
+    </>
+    
+  );
+}

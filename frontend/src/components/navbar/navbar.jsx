@@ -1,29 +1,68 @@
-import React from 'react';
+import React from "react";
 
-const Navbar = () => {
+export default function Navbar() {
+  const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
-    <nav className="bg-blue-500 p-4">
-      <div className="container mx-auto">
-        <div className="flex items-center justify-between">
-          <div className="text-white text-2xl font-semibold">My App</div>
-          <ul className="flex space-x-4">
-            <li className="text-white hover:text-blue-200">
-              <a href="#">Home</a>
-            </li>
-            <li className="text-white hover:text-blue-200">
-              <a href="#">About</a>
-            </li>
-            <li className="text-white hover:text-blue-200">
-              <a href="#">Services</a>
-            </li>
-            <li className="text-white hover:text-blue-200">
-              <a href="#">Contact</a>
-            </li>
-          </ul>
+    <>
+      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-slate-200">
+        <div className="container px-8 mx-auto flex flex-wrap items-center justify-between">
+          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+            <div
+              className="text-4xl font-bold inline-block  py-2 whitespace-nowrap uppercase text-black"
+              href="#pablo"
+            >
+              RECIPE.
+              <div
+                className="text-sm font-bold inline-block  py-2 whitespace-nowrap uppercase text-black"
+                href="#pablo"
+              >
+                com
+              </div>
+            </div>
+            <button
+              className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+              type="button"
+              onClick={() => setNavbarOpen(!navbarOpen)}
+            >
+              text
+            </button>
+          </div>
+          <div
+            className={
+              "lg:flex flex-grow items-center" +
+              (navbarOpen ? " flex" : " hidden")
+            }
+            id="example-navbar-danger"
+          >
+            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+              <li className="nav-item">
+                <a
+                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
+                  href="#pablo"
+                >
+                  <span className="ml-2">Home</span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
+                  href="#pablo"
+                >
+                  <span className="ml-2">Recipes</span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
+                  href="#pablo"
+                >
+                  <span className="ml-2">Refresh</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
-};
-
-export default Navbar;
+}
