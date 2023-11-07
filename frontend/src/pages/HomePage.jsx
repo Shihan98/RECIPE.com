@@ -1,14 +1,16 @@
 import React from "react";
 import Hero from "../components/heroSection/hero";
-import RecipeSection from "../components/recipe/recipeSection";
 import AddRecipe from "../components/recipe/addRecipe";
+import FeaturedRecipeSection from "../components/recipe/FeaturedrecipeSection";
+import RecipeSection from "../components/recipe/RecipeSection";
 
 export default function Homepage() {
   return (
     <>
       <Hero />
-      <RecipeSection />
+      <FeaturedRecipeSection />
       <AddRecipe/>
+      <RecipeSection/>
     </>
   );
 }
