@@ -27,3 +27,7 @@ npm run dev
 **Database Configurations**
 Add .env file to `backend\` 
 with DB_URL=Your mongodb link
+
+<br>
+**Wire frame design  **
+https://www.figma.com/file/jCIxkalbSGMla00EIXwpQO/Untitled?type=design&node-id=0%3A1&mode=design&t=frvObfzF64mv89zH-1
