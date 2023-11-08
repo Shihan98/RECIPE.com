@@ -5,10 +5,10 @@ import FeaturedRecipeSection from "../components/recipe/FeaturedrecipeSection";
 
 export default function Homepage() {
   return (
-    <>
+    <div className="pt-20">
       <Hero />
-      <FeaturedRecipeSection />
       <AddRecipe />
-    </>
+      <FeaturedRecipeSection />
+    </div>
   );
 }

@@ -5,9 +5,9 @@ export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-slate-200">
+      <nav className="fixed top-0 left-0 right-0 flex flex-wrap items-center justify-between px-2 py-3 bg-slate-200">
         <div className="container px-8 mx-auto flex flex-wrap items-center justify-between">
-          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+          <div className="w-full flex justify-between lg:w-auto lg:block lg:justify-start">
             <div
               className="text-4xl font-bold inline-block  py-2 whitespace-nowrap uppercase text-black"
               href="#pablo"

@@ -1,37 +1,33 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
-import axios from 'axios';
+import axios from "axios";
 
 export default function DeleteModal(recipe) {
-  const {_id, name, ingredients, description } = recipe.recipe;
+  const { _id, name, ingredients, description } = recipe.recipe;
   let [isOpen, setIsOpen] = useState(false);
-  let [id , setId] = useState(_id);
+  let [id, setId] = useState(_id);
 
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   function openModal() {
-    setIsOpen(true)
+    setIsOpen(true);
   }
-
+  // deletion
   function deleteRecipe() {
     axios
       .delete(`http://localhost:8080/api/v1/recipe/${id}`)
       .then((result) => {
-        // Handle the successful deletion here, for example, update your UI or show a success message.
         console.log("Recipe deleted successfully");
         console.log(result);
         closeModal();
-
-        // Optionally, you can reload the window or update your recipe list.
+        // reload the window
         window.location.reload();
-        // updateRecipeList(); // Define this function to update the recipe list
       })
       .catch((err) => {
         console.error("Error deleting recipe:", err);
-        // Handle the error, show an error message, or log the error as needed.
       });
   }
 
@@ -41,9 +37,9 @@ export default function DeleteModal(recipe) {
         <button
           type="button"
           onClick={openModal}
-          className="rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+          className="rounded-md bg-red-700/20 px-4 py-2 text-sm font-medium text-black hover:bg-red-700/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
         >
-          <DeleteIcon/>
+          <DeleteIcon />
         </button>
       </div>
 
@@ -79,7 +75,9 @@ export default function DeleteModal(recipe) {
                   >
                     Delete
                   </Dialog.Title>
-                  <p className="text-center">Are you sure want to delete the recipe?</p>
+                  <p className="text-center">
+                    Are you sure want to delete the recipe?
+                  </p>
                   <div className="mt-4 flex flex-col">
                     <button
                       type="button"
@@ -91,7 +89,7 @@ export default function DeleteModal(recipe) {
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-red-300 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={()=>deleteRecipe()}
+                      onClick={() => deleteRecipe()}
                     >
                       Delete
                     </button>
@@ -103,5 +101,5 @@ export default function DeleteModal(recipe) {
         </Dialog>
       </Transition>
     </>
-  )
+  );
 }

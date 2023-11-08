@@ -31,7 +31,6 @@ export default function EditModal({ recipe }) {
         console.log(data);
         // Close the modal
         closeModal();
-
         // Reload the window after closing the modal
         window.location.reload();
       })
@@ -46,7 +45,7 @@ export default function EditModal({ recipe }) {
         <button
           type="button"
           onClick={openModal}
-          className="rounded-md bg-black/20 px-4 py-2 text-sm font-medium text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+          className="rounded-md bg-teal-700/20 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
         >
           <EditIcon />
         </button>
@@ -116,7 +115,8 @@ export default function EditModal({ recipe }) {
                     />
                   </div>
 
-                  <div className="mt-4">
+                  <div className="mt-4 flex flex-nowrap">
+                    <div>
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
@@ -124,6 +124,8 @@ export default function EditModal({ recipe }) {
                     >
                       Cancel
                     </button>
+                    </div>
+                    <div>
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
@@ -131,6 +133,8 @@ export default function EditModal({ recipe }) {
                     >
                       Update
                     </button>
+                    </div>
+                    
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
