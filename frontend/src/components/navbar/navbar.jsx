@@ -38,26 +38,26 @@ export default function Navbar() {
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
                 <NavLink
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75 aria-[current=page]:border-b-5 aria-[current=page]:border-cyan-600"
+                  className="px-3 py-2 flex items-center  uppercase font-normal leading-snug text-black hover:opacity-75 aria-[current=page]:border-b-5 aria-[current=page]:border-cyan-600"
                   to="/"
                 >
-                  <span className="ml-2">Home</span>
+                  <span className="ml-2 text-lg">Home</span>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
+                  className="px-3 py-2 flex items-center uppercase font-normal leading-snug text-black hover:opacity-75"
                   to="/recipes"
                 >
-                  <span className="ml-2">Recipes</span>
+                  <span className="ml-2 text-lg">Recipes</span>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75 cursor-pointer"
+                  className="px-3 py-2 flex items-center uppercase font-normal leading-snug text-black hover:opacity-75 cursor-pointer"
                   onClick={() => window.location.reload()}
                 >
-                  <span className="ml-2">Refresh</span>
+                  <span className="ml-2 text-lg">Refresh</span>
                 </a>
               </li>
             </ul>
