@@ -36,3 +36,7 @@ exports.deleteRecipe = async (req, res) => {
   const deletedRecipe = await recipe.findByIdAndDelete(id);
   res.status(200).json({ message: "deleted" });
 };
+
+exports.lastThreeRecipe = async (req, res) => {
+  await recipe.find({}).then((result) => {res.status(200).json(result);}).catch((err) => {console.log(err);});
+};

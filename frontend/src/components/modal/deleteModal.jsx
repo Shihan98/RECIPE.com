@@ -1,9 +1,12 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import DeleteIcon from "@mui/icons-material/Delete";
+import axios from 'axios';
 
-export default function DeleteModal() {
-  let [isOpen, setIsOpen] = useState(false)
+export default function DeleteModal(recipe) {
+  const {_id, name, ingredients, description } = recipe.recipe;
+  let [isOpen, setIsOpen] = useState(false);
+  let [id , setId] = useState(_id);
 
   function closeModal() {
     setIsOpen(false)
@@ -11,6 +14,25 @@ export default function DeleteModal() {
 
   function openModal() {
     setIsOpen(true)
+  }
+
+  function deleteRecipe() {
+    axios
+      .delete(`http://localhost:8080/api/v1/recipe/${id}`)
+      .then((result) => {
+        // Handle the successful deletion here, for example, update your UI or show a success message.
+        console.log("Recipe deleted successfully");
+        console.log(result);
+        closeModal();
+
+        // Optionally, you can reload the window or update your recipe list.
+        window.location.reload();
+        // updateRecipeList(); // Define this function to update the recipe list
+      })
+      .catch((err) => {
+        console.error("Error deleting recipe:", err);
+        // Handle the error, show an error message, or log the error as needed.
+      });
   }
 
   return (
@@ -53,23 +75,23 @@ export default function DeleteModal() {
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-xl font-medium pb-5 text-center leading-6 text-gray-900"
                   >
                     Delete
                   </Dialog.Title>
-                  <p>Are you sure want to delete the recipe?</p>
-                  <div className="mt-4">
+                  <p className="text-center">Are you sure want to delete the recipe?</p>
+                  <div className="mt-4 flex flex-col">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
                       Cancel
                     </button>
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
+                      className="inline-flex justify-center rounded-md border border-transparent bg-red-300 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      onClick={()=>deleteRecipe()}
                     >
                       Delete
                     </button>

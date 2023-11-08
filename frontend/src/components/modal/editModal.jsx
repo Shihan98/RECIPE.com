@@ -1,12 +1,15 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
+import axios from "axios";
 
 export default function EditModal({ recipe }) {
   let [isOpen, setIsOpen] = useState(false);
-  let [name, setName] = useState(recipe.recipeName);
+  let [name, setName] = useState(recipe.name);
   let [ingredients, setIngredients] = useState(recipe.ingredients);
   let [description, setDescription] = useState(recipe.description);
+  let [id , setId] = useState(recipe._id);
+  let [data, setData] = useState();
 
   function closeModal() {
     setIsOpen(false);
@@ -14,6 +17,27 @@ export default function EditModal({ recipe }) {
 
   function openModal() {
     setIsOpen(true);
+  }
+
+  function updateRecipe() {
+    axios
+      .put(`http://localhost:8080/api/v1/recipe/${id}`, {
+        name: name,
+        ingredients: ingredients,
+        description: description,
+      })
+      .then((result) => {
+        setData(result);
+        console.log(data);
+        // Close the modal
+        closeModal();
+
+        // Reload the window after closing the modal
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -76,7 +100,7 @@ export default function EditModal({ recipe }) {
                       type="text"
                       name="Name"
                       className="border border-slate-500"
-                      nChange={(e) => setIngredients(e.target.value)}
+                      onChange={(e) => setIngredients(e.target.value)}
                       value={ingredients}
                     />
                   </div>
@@ -87,7 +111,7 @@ export default function EditModal({ recipe }) {
                       type="text"
                       name="Name"
                       className="border border-slate-500"
-                      nChange={(e) => setDescription(e.target.value)}
+                      onChange={(e) => setDescription(e.target.value)}
                       value={description}
                     />
                   </div>
@@ -103,9 +127,9 @@ export default function EditModal({ recipe }) {
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
+                      onClick={()=>updateRecipe()}
                     >
-                      Save
+                      Update
                     </button>
                   </div>
                 </Dialog.Panel>

@@ -4,9 +4,10 @@ import { Fragment, useState } from "react";
 
 export default function AddModal() {
   let [isOpen, setIsOpen] = useState(false);
-  let [name, setName] = useState();
-  let [ingredients, setIngredients] = useState();
-  let [description, setDescription] = useState();
+  let [name, setName] = useState("");
+  let [ingredients, setIngredients] = useState("");
+  let [description, setDescription] = useState("");
+  let [data, setdata] = useState();
 
   function closeModal() {
     setIsOpen(false);
@@ -26,6 +27,11 @@ export default function AddModal() {
       .then((result) => {
         setdata(result);
         console.log(data);
+        // Close the modal
+        closeModal();
+
+        // Reload the window after closing the modal
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
