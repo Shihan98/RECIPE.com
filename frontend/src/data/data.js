@@ -8,7 +8,7 @@ export const recipeData = [
   },
   {
     id: 2,
-    recipeName: "Grilled Lemon Herb Salmon",
+    recipeName: "Grilled Lemon Herb Salmon Risotto",
     ingredients: "Salmon fillets, Lemon, Fresh herbs, Olive oil, Salt, Pepper",
     description:
       "A light and flavorful salmon dish that's perfect for a summer barbecue. The combination of zesty lemon and fresh herbs will delight your taste buds.",
@@ -21,3 +21,4 @@ export const recipeData = [
       "A classic Italian pasta dish that's simple yet incredibly delicious. Creamy carbonara sauce, crispy pancetta, and al dente spaghetti make this a go-to recipe.",
   },
 ];
+//bummy data ,you can add-recipe and check functionality 
