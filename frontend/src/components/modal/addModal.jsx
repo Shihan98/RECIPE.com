@@ -1,15 +1,35 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Dialog, Transition } from "@headlessui/react";
+import axios from "axios";
+import { Fragment, useState } from "react";
 
 export default function AddModal() {
-  let [isOpen, setIsOpen] = useState(false)
+  let [isOpen, setIsOpen] = useState(false);
+  let [name, setName] = useState();
+  let [ingredients, setIngredients] = useState();
+  let [description, setDescription] = useState();
 
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   function openModal() {
-    setIsOpen(true)
+    setIsOpen(true);
+  }
+
+  function createRecipe() {
+    axios
+      .post("http:localhost:8080/api/v1/recipe", {
+        name: name,
+        ingredients: ingredients,
+        description: description,
+      })
+      .then((result) => {
+        setdata(result);
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -59,26 +79,32 @@ export default function AddModal() {
                   <div className="mt-2">
                     <p>Name</p>
                     <input
-                        type='text'
-                        name='Name'
-                        className='border border-slate-500'
+                      type="text"
+                      name="Name"
+                      className="border border-slate-500"
+                      onChange={(e) => setName(e.target.value)}
+                      value={name}
                     />
                   </div>
                   <div className="mt-2">
                     <p>Ingredients</p>
                     <input
-                        type='text'
-                        name='Name'
-                        className='border border-slate-500'
+                      type="text"
+                      name="Name"
+                      className="border border-slate-500"
+                      onChange={(e) => setIngredients(e.target.value)}
+                      value={ingredients}
                     />
                   </div>
 
                   <div className="mt-2">
                     <p>Description</p>
                     <input
-                        type='text'
-                        name='Name'
-                        className='border border-slate-500'
+                      type="text"
+                      name="Name"
+                      className="border border-slate-500"
+                      onChange={(e) => setDescription(e.target.value)}
+                      value={description}
                     />
                   </div>
 
@@ -93,7 +119,7 @@ export default function AddModal() {
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
+                      onClick={() => createRecipe()}
                     >
                       Save
                     </button>
@@ -105,5 +131,5 @@ export default function AddModal() {
         </Dialog>
       </Transition>
     </>
-  )
+  );
 }
