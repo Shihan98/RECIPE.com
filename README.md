@@ -22,3 +22,8 @@ npm install
 # step 5: run fronend
 npm run dev
 ```
+
+
+**Database Configurations**
+Add .env file to `backend\` 
+with DB_URL=Your mongodb link
