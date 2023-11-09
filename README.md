@@ -1,6 +1,7 @@
 # RECIPE.com
 
-![image](https://github.com/Shihan98/entry-test/assets/108385778/acef75c3-0db9-474f-8283-216cd189b08f)
+
+![Screenshot 2023-11-09 011800](https://github.com/Shihan98/entry-test/assets/108385778/8a226331-66d3-4162-8b3f-e8056071da98)
 
 
 ## Setup the development server
